@@ -2,18 +2,29 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Well‑Tegra Prototype — Interoperable AI for Well Engineering</title>
-  <meta name="description" content="Well‑Tegra unifies Petrel, WellView, and JewelSuite with an interoperable AI layer. Planner, Performer, Analyzer, and Global AI Landscape." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Well-Tegra — Interoperable AI for Well Engineering</title>
+  <meta name="description" content="Well-Tegra unifies Petrel, WellView, and JewelSuite with an interoperable AI layer. Planner, Performer, Analyzer, and Global AI Landscape." />
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.75rem; }
+    .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .footer-contacts { position: fixed; left: 12px; bottom: 12px; font-size: 0.9rem; line-height: 1.25rem; }
+    .footer-contacts a { text-decoration: underline; }
+    @media (max-width: 640px) { .footer-contacts { position: static; margin-top: 16px; } }
+  </style>
 </head>
 <body class="bg-white text-gray-900">
+  <!-- Header -->
   <header class="flex items-center justify-between px-6 py-4 border-b shadow">
     <div class="flex items-center gap-3">
-      <img src="assets/images/welltegra-logo.jpg" alt="Well‑Tegra Logo" class="h-10 w-auto" />
-      <span class="text-xl font-bold text-indigo-600">Well‑Tegra</span>
+      <!-- Optional logo: put your file at /assets/images/welltegra-logo.jpg and uncomment -->
+      <!-- <img src="assets/images/welltegra-logo.jpg" alt="Well-Tegra Logo" class="h-10 w-auto" /> -->
+      <span class="text-xl font-bold text-indigo-600">Well-Tegra</span>
     </div>
     <nav class="hidden md:flex gap-6 text-sm">
       <a href="#planner" class="hover:text-indigo-600">Planner</a>
@@ -25,11 +36,16 @@
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="py-12 px-6 bg-gradient-to-b from-blue-50 to-white">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 items-center">
       <div>
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Your software works. <span class="text-indigo-600">We make it work smarter.</span></h1>
-        <p class="text-lg text-gray-700 mt-4">Well‑Tegra is the interoperable AI layer that unifies Petrel, WellView, JewelSuite, and more — turning trapped knowledge into predictive power.</p>
+        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+          Your software works. <span class="text-indigo-600">We make it work smarter.</span>
+        </h1>
+        <p class="text-lg text-gray-700 mt-4">
+          Well-Tegra is the interoperable AI layer that unifies Petrel, WellView, JewelSuite, and more — turning trapped knowledge into predictive power.
+        </p>
         <div class="mt-6 flex gap-3">
           <a href="#whitepaper" class="px-5 py-2.5 rounded bg-indigo-600 text-white hover:bg-indigo-700">Download White Paper</a>
           <a href="#global-ai" class="px-5 py-2.5 rounded border border-indigo-600 text-indigo-700 hover:bg-indigo-50">See Global AI Landscape</a>
@@ -37,16 +53,19 @@
       </div>
       <div>
         <div class="video-wrap shadow-lg">
-          <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0&modestbranding=1&playsinline=1"
-                  title="Well‑Tegra Intro" frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowfullscreen></iframe>
+          <!-- Replace the sample YouTube ID (M7lc1UVf-VE) with your own -->
+          <iframe
+            src="https://www.youtube.com/embed/M7lc1UVf-VE?rel=0&modestbranding=1&playsinline=1"
+            title="Well-Tegra Intro" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
         </div>
-        <p class="text-xs text-gray-500 mt-2">Replace <code>YOUR_VIDEO_ID</code> in the URL above to enable your intro video.</p>
+        <p class="text-xs text-gray-500 mt-2">Set your video: change the YouTube ID in the iframe URL.</p>
       </div>
     </div>
   </section>
 
+  <!-- Planner / Performer / Analyzer (simple copies so they always render) -->
   <section id="planner" class="py-10 px-6 border-t">
     <h2 class="text-2xl font-bold mb-3">🗺️ Planner</h2>
     <p class="max-w-2xl text-gray-700">Plan operations using integrated schematics, AI risk matrices, and smart job planning tools. No migration, no disruption.</p>
@@ -57,13 +76,14 @@
   </section>
   <section id="analyzer" class="py-10 px-6 border-t">
     <h2 class="text-2xl font-bold mb-3">📊 Analyzer</h2>
-    <p class="max-w-2xl text-gray-700">Analyze job performance, mine mistakes, and generate digital end‑of‑well reports with embedded analytics.</p>
+    <p class="max-w-2xl text-gray-700">Analyze job performance, mine mistakes, and generate digital end-of-well reports with embedded analytics.</p>
   </section>
 
+  <!-- Global AI Landscape (Chart renders with CDN) -->
   <section id="global-ai" class="py-14 px-6 bg-gray-50 border-t">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl font-extrabold mb-2">🌍 Global AI Landscape in Well Engineering</h2>
-      <p class="text-gray-700 mb-8 max-w-3xl">From Aramco’s METABRAIN to BP’s Well Path Optimizer — AI is transforming well engineering. Well‑Tegra connects these ecosystems, enabling interoperability and explainable, human‑first AI.</p>
+      <p class="text-gray-700 mb-8 max-w-3xl">From Aramco’s METABRAIN to BP’s Well Path Optimizer — AI is transforming well engineering. Well-Tegra connects these ecosystems, enabling interoperability and explainable, human-first AI.</p>
       <div class="bg-white border rounded-lg p-4 shadow-sm">
         <div class="flex items-center justify-between mb-2">
           <h3 class="font-semibold">Comparative View</h3>
@@ -74,36 +94,34 @@
     </div>
   </section>
 
+  <!-- White Paper -->
   <section id="whitepaper" class="py-14 px-6 border-t">
     <div class="max-w-3xl mx-auto">
       <h2 class="text-3xl font-extrabold mb-3">📘 White Paper</h2>
-      <p class="text-gray-700">Download the Well‑Tegra white paper summarizing the “mistake‑mining” approach, integration strategy, and phased ROI plan.</p>
+      <p class="text-gray-700">Download the Well-Tegra white paper summarizing the “mistake-mining” approach, integration strategy, and phased ROI plan.</p>
       <div class="mt-5 flex gap-3">
+        <!-- This will 404 until you upload /whitepaper/WellTegra-WhitePaper.pdf -->
         <a class="px-5 py-2.5 rounded bg-indigo-600 text-white hover:bg-indigo-700"
            href="whitepaper/WellTegra-WhitePaper.pdf" download>Download PDF</a>
         <a class="px-5 py-2.5 rounded border border-indigo-600 text-indigo-700 hover:bg-indigo-50"
            href="mailto:info@welltegra.network">Request Full Version</a>
       </div>
-      <p class="text-xs text-gray-500 mt-2">A preview PDF is included. Replace it with your final PDF at <code>/whitepaper/WellTegra-WhitePaper.pdf</code>.</p>
+      <p class="text-xs text-gray-500 mt-2">If you see a 404, upload your PDF at <code>/whitepaper/WellTegra-WhitePaper.pdf</code>.</p>
     </div>
   </section>
 
+  <!-- Partners (text placeholders so it never breaks) -->
   <section id="partners" class="py-12 px-6 bg-gray-50 border-t">
     <div class="max-w-6xl mx-auto">
       <h2 class="text-3xl font-extrabold mb-6">🤝 Integration Ecosystem</h2>
-      <p class="text-gray-700 mb-6 max-w-3xl">Well‑Tegra is the connective layer between operator software and AI platforms. We partner across the ecosystem to accelerate interoperability.</p>
-      <div class="partner-logos flex flex-wrap items-center gap-6">
-        <img src="assets/images/partners/peloton.png" alt="Peloton" />
-        <img src="assets/images/partners/halliburton.png" alt="Halliburton" />
-        <img src="assets/images/partners/slb.png" alt="SLB" />
-        <img src="assets/images/partners/cognite.png" alt="Cognite" />
-      </div>
-      <p class="text-xs text-gray-500 mt-2">Logos are placeholders. Replace with approved assets before publishing.</p>
+      <p class="text-gray-700 mb-2">Peloton • Halliburton • SLB • Cognite</p>
+      <p class="text-xs text-gray-500">To use logos, upload files to <code>/assets/images/partners/</code> and add <code>&lt;img&gt;</code> tags.</p>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="px-6 py-10 border-t mt-10 relative">
-    <p class="text-center text-gray-500 text-sm">© 2025 Well‑Tegra. All rights reserved.</p>
+    <p class="text-center text-gray-500 text-sm">© 2025 Well-Tegra. All rights reserved.</p>
     <div class="footer-contacts text-gray-700">
       <div><strong>Contact:</strong></div>
       <div><a href="mailto:info@welltegra.network">info@welltegra.network</a></div>
@@ -111,6 +129,38 @@
     </div>
   </footer>
 
-  <script src="assets/js/landscape-chart.js"></script>
+  <script>
+    // Chart bootstrap (no external files needed)
+    document.addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('aiLandscapeChart');
+      if (!el || !window.Chart) return;
+      new Chart(el.getContext('2d'), {
+        type: 'scatter',
+        data: {
+          datasets: [
+            {label: 'Aramco', data: [{x: 9.5, y: 5.5}]},
+            {label: 'ExxonMobil', data: [{x: 8.5, y: 6.5}]},
+            {label: 'Chevron', data: [{x: 8.0, y: 6.0}]},
+            {label: 'Shell', data: [{x: 8.5, y: 7.0}]},
+            {label: 'BP', data: [{x: 7.5, y: 7.0}]},
+            {label: 'TotalEnergies', data: [{x: 8.0, y: 7.5}]},
+            {label: 'Equinor', data: [{x: 8.5, y: 8.0}]},
+            {label: 'ConocoPhillips', data: [{x: 7.5, y: 6.5}]},
+            {label: 'Sinopec', data: [{x: 7.0, y: 5.5}]},
+            {label: 'PetroChina', data: [{x: 7.5, y: 5.0}]},
+            {label: 'Well-Tegra (Bridge)', data: [{x: 8.2, y: 9.5}]}
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { position: 'bottom' } },
+          scales: {
+            x: { title: { display: true, text: 'AI Maturity' }, min: 0, max: 10 },
+            y: { title: { display: true, text: 'Data Interoperability' }, min: 0, max: 10 }
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
