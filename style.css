@@ -1,0 +1,9 @@
+
+body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+.footer-contacts { position: fixed; left: 12px; bottom: 12px; font-size: 0.9rem; line-height: 1.25rem; }
+.footer-contacts a { text-decoration: underline; }
+@media (max-width: 640px) { .footer-contacts { position: static; margin: 16px 0 0 0; } }
+.video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 0.75rem; }
+.video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.partner-logos img { height: 36px; width: auto; opacity: 0.85; }
+.partner-logos img:hover { opacity: 1; }
