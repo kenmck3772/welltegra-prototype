@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Well Count Debug</title>
+</head>
+<body>
+    <h1>Well-Tegra Well Count Debug</h1>
+    <div id="output"></div>
+    
+    <script type="module">
+        import { wellData } from './js/data.js';
+        
+        const output = document.getElementById('output');
+        
+        output.innerHTML = `
+            <h2>Total Wells: ${wellData.length}</h2>
+            <h3>Well List:</h3>
+            <ul>
+                ${wellData.map((well, index) => 
+                    `<li>${index + 1}. ${well.id} - ${well.name}</li>`
+                ).join('')}
+            </ul>
+        `;
+        
+        console.log('Well Data:', wellData);
+        console.log('Total wells found:', wellData.length);
+    </script>
+</body>
+</html>

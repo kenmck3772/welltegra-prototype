@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Performer • Well-Tegra</title>
+  <meta name="description" content="Capture structured events during operations with zero lock-in." />
+  <link rel="icon" href="assets/icons/favicon.png" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./assets/tailwind.css" />
+  <link rel="stylesheet" href="./assets/custom.css" />
+</head>
+<body class="bg-slate-900 text-white min-h-screen">
+  <header class="header border-b border-slate-700 sticky top-0 z-40">
+    <div class="mx-auto max-w-7xl px-6 h-16 flex items-center justify-between">
+      <a href="./index.html" class="font-extrabold text-xl text-white">Well-Tegra</a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="./planner.html" class="nav-link">Planner</a>
+        <a href="./performer.html" class="nav-link active">Performer</a>
+        <a href="./analyzer.html" class="nav-link">Analyzer</a>
+        <a href="./videos.html" class="nav-link">Videos</a>
+        <a href="./whitepaper.html" class="nav-link">White Paper</a>
+      </nav>
+      <div></div>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-7xl px-6 py-10">
+    <!-- Hero Section -->
+    <div class="mb-10">
+      <h1 class="text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+        Performer
+      </h1>
+      <p class="mt-3 text-lg text-slate-300">Live operations logging with visual well schematics and real-time monitoring</p>
+    </div>
+
+    <!-- Well Selection & Schematic Viewer -->
+    <section class="mb-8">
+      <div class="bg-slate-800 rounded-2xl border border-slate-700 p-6 shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-semibold text-white">Active Well Operations</h2>
+          <div class="flex items-center gap-3">
+            <label class="text-sm text-slate-300">
+              Select Well:
+              <select id="wellSelector" class="ml-2 bg-slate-700 border border-slate-600 rounded-lg px-3 py-1 text-white focus:ring-2 focus:ring-blue-500">
+                <option value="">Choose a well...</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        
+        <!-- Schematic Display -->
+        <div id="schematicContainer" class="relative bg-slate-900 rounded-xl border border-slate-600 p-4 min-h-[400px] flex items-center justify-center">
+          <div id="schematicPlaceholder" class="text-center text-slate-400">
+            <div class="text-6xl mb-4">🔧</div>
+            <p class="text-lg">Select a well to view its schematic</p>
+            <p class="text-sm mt-2">Real-time operations monitoring with visual context</p>
+          </div>
+          <img id="schematicImage" class="hidden max-w-full max-h-full object-contain" alt="Well Schematic" />
+          
+          <!-- Overlay Controls -->
+          <div id="schematicControls" class="hidden absolute top-4 right-4 flex gap-2">
+            <button class="bg-slate-800/80 backdrop-blur-sm border border-slate-600 rounded-lg px-3 py-2 text-white text-sm hover:bg-slate-700 transition-colors">
+              📏 Measure
+            </button>
+            <button class="bg-slate-800/80 backdrop-blur-sm border border-slate-600 rounded-lg px-3 py-2 text-white text-sm hover:bg-slate-700 transition-colors">
+              🔍 Zoom
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operations Grid -->
+    <section class="grid gap-6 lg:grid-cols-3">
+      <!-- Event Logger -->
+      <div class="lg:col-span-2">
+        <form class="bg-slate-800 rounded-2xl border border-slate-700 p-6 shadow-xl">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-semibold text-white">Operations Log</h2>
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span class="text-sm text-slate-300">Live Recording</span>
+            </div>
+          </div>
+          
+          <div class="grid md:grid-cols-2 gap-4 mb-6">
+            <label class="text-sm text-slate-300">
+              Timestamp
+              <input id="timestamp" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500" type="datetime-local" />
+            </label>
+            
+            <label class="text-sm text-slate-300">
+              Event Category
+              <select id="category" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500">
+                <option value="">Select category...</option>
+                <option value="pressure">🔴 Pressure Event</option>
+                <option value="toolstring">🔧 Toolstring Operation</option>
+                <option value="circulation">💧 Circulation Event</option>
+                <option value="safety">⚠️ Safety Alert</option>
+                <option value="equipment">⚙️ Equipment Status</option>
+                <option value="personnel">👥 Personnel Change</option>
+                <option value="environmental">🌱 Environmental</option>
+                <option value="other">📝 Other</option>
+              </select>
+            </label>
+            
+            <label class="text-sm text-slate-300">
+              Severity Level
+              <select id="severity" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500">
+                <option value="info">ℹ️ Information</option>
+                <option value="warning">⚠️ Warning</option>
+                <option value="critical">🚨 Critical</option>
+              </select>
+            </label>
+            
+            <label class="text-sm text-slate-300">
+              Location/Depth
+              <input id="location" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500" placeholder="e.g., 3,450 ft MD" />
+            </label>
+          </div>
+          
+          <label class="block text-sm text-slate-300 mb-4">
+            Event Details
+            <textarea id="details" class="mt-1 w-full bg-slate-700 border border-slate-600 rounded-lg px-3 py-2 text-white h-32 focus:ring-2 focus:ring-blue-500" placeholder="Describe what happened, actions taken, and any observations..."></textarea>
+          </label>
+          
+          <div class="flex gap-3 flex-wrap">
+            <button type="button" id="addEvent" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl transition-colors font-medium">
+              📝 Log Event
+            </button>
+            <button type="button" id="exportCSV" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-6 py-2 rounded-xl transition-colors">
+              📊 Export CSV
+            </button>
+            <button type="button" id="exportJSON" class="bg-slate-700 hover:bg-slate-600 border border-slate-600 text-white px-6 py-2 rounded-xl transition-colors">
+              📋 Export JSON
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Live Activity Feed -->
+      <aside class="space-y-6">
+        <!-- Recent Events -->
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 p-6 shadow-xl">
+          <h3 class="text-lg font-semibold text-white mb-4">Live Feed</h3>
+          <div id="recentEvents" class="space-y-3 max-h-96 overflow-y-auto">
+            <div class="flex items-start gap-3 p-3 bg-slate-700/50 rounded-lg border-l-4 border-green-500">
+              <div class="text-green-500 text-lg">ℹ️</div>
+              <div class="flex-1 text-sm">
+                <div class="text-white font-medium">12:45 - Normal Pressure</div>
+                <div class="text-slate-300">Surface pressure: 1,950 psi</div>
+                <div class="text-slate-400 text-xs mt-1">2 minutes ago</div>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3 p-3 bg-slate-700/50 rounded-lg border-l-4 border-amber-500">
+              <div class="text-amber-500 text-lg">⚠️</div>
+              <div class="flex-1 text-sm">
+                <div class="text-white font-medium">12:42 - Circulation Loss</div>
+                <div class="text-slate-300">Partial loss detected at 3,200 ft</div>
+                <div class="text-slate-400 text-xs mt-1">5 minutes ago</div>
+              </div>
+            </div>
+            
+            <div class="flex items-start gap-3 p-3 bg-slate-700/50 rounded-lg border-l-4 border-red-500">
+              <div class="text-red-500 text-lg">🚨</div>
+              <div class="flex-1 text-sm">
+                <div class="text-white font-medium">12:35 - High Torque</div>
+                <div class="text-slate-300">Overpull detected: 25,000 lbs</div>
+                <div class="text-slate-400 text-xs mt-1">12 minutes ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="bg-slate-800 rounded-2xl border border-slate-700 p-6 shadow-xl">
+          <h3 class="text-lg font-semibold text-white mb-4">Today's Summary</h3>
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-slate-300">Events Logged</span>
+              <span class="text-white font-bold">47</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-300">Warnings</span>
+              <span class="text-amber-400 font-bold">3</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-300">Criticals</span>
+              <span class="text-red-400 font-bold">1</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-300">Uptime</span>
+              <span class="text-green-400 font-bold">96.2%</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-700 bg-slate-800/50">
+    <div class="mx-auto max-w-7xl px-6 py-8 text-sm text-slate-400">
+      <div class="flex justify-between items-center">
+        <span>© Well-Tegra - Live Operations Management</span>
+        <span>🔒 Secure • 📊 Real-time • 🌐 Zero Lock-in</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Load JavaScript -->
+  <script type="module" src="js/performer.js"></script>
+</body>
+</html>

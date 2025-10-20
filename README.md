@@ -1,26 +1,46 @@
+# Well‑Tegra Demo — Production‑ready Starter (FULL APP)
 
-# Well‑Tegra Prototype (v2)
+This folder contains your **full single‑file app** (Planner, Performer, Analyzer, Logistics, HSE, POB, FAQ, About)
+wired to **local assets** with an optional **Tailwind build**.
 
-Interoperable AI layer for well engineering — with YouTube hero, White Paper download, Global AI Landscape, and Partner strip.
+> **Quick Preview (no build):**
+> 1) Open `index.html` in a browser.  
+> 2) It uses the Tailwind CDN for convenience.  
+> 3) When you're ready for production, **remove the CDN** and **enable local CSS** (see below).
 
-## What's new in v2
-- Hero section with responsive YouTube embed (`YOUR_VIDEO_ID` placeholder).
-- White Paper section with download button (`/whitepaper/WellTegra-WhitePaper.pdf`).
-- Partner logo strip (placeholders in `/assets/images/partners/`).
-- Global AI Landscape chart retained; contact block fixed bottom-left.
+## Switch to local Tailwind (production)
+1. Install tools:
+   ```bash
+   npm install
+   ```
+2. Build CSS:
+   ```bash
+   npm run build:css
+   # or watch during development
+   npm run watch:css
+   ```
+3. In `index.html`:
+   - **Remove** the CDN line: `<script src="https://cdn.tailwindcss.com"></script>`
+   - **Uncomment** the local CSS line near the top:
+     ```html
+     <!-- <link rel="stylesheet" href="./assets/tailwind.css" /> -->
+     ```
 
-## Deploy on GitHub Pages
-1. Create a public repo named **welltegra-prototype**.
-2. Upload all files to the repo root (keep folders intact).
-3. Settings → Pages → Source: **main** / **(root)**.
-4. Live URL: `https://<your-username>.github.io/welltegra-prototype/`
+## Assets
+All images/videos are read from `./assets`. Replace the placeholders with your real files.
+Keep the same names to avoid changing `index.html`:
+- `logo.svg` (header logo)
+- `watermark.jpg` (subtle repeating background)
+- `hero1.mp4`, `hero2.mp4` (optional video bg)
+- `hero-poster.svg` (poster image if video disabled)
+- Favicons: `favicon.ico`, `favicon.svg`, `favicon.png`, `apple-touch-icon.png`, `web-app-manifest-192x192.png`
+- `styles.css` for small custom tweaks (already linked)
 
-## Replace Placeholders
-- `/assets/images/welltegra-logo.jpg` and `/assets/images/watermark.jpg`.
-- `/assets/images/partners/*.png` with real logos.
-- Update YouTube embed by replacing `YOUR_VIDEO_ID` in `index.html`.
-- Replace the whitepaper PDF at `/whitepaper/WellTegra-WhitePaper.pdf` with the final document.
+## YouTube
+Header includes a link to your channel: **@WellTegra** (`UCedD5TAvyQgV1LRFfjoNRww`).
 
-## Contact
-- info@welltegra.network
-- kenmckenzie@welltegra.network
+---
+
+### Troubleshooting
+- If you still see a console note about Tailwind CDN: that’s just a reminder. Remove the CDN and use the built CSS as shown above.
+- Broken images? Make sure the asset filenames in `/assets` match the ones listed above.

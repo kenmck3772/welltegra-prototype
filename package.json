@@ -1,0 +1,22 @@
+{
+  "name": "well-tegra-app",
+  "version": "1.0.0",
+  "description": "Well-Tegra Data Solutions Interactive Demo",
+  "main": "index.html",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./assets/tailwind.css --watch"
+  },
+  "keywords": [
+    "oil",
+    "gas",
+    "data",
+    "ai"
+  ],
+  "author": "Kenneth McKenzie",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13"
+  }
+}
